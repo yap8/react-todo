@@ -1,25 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import TodoForm from '../TodoForm/TodoForm'
 import TodoList from '../TodoList/TodoList'
 
 const Todo = () => {
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: 'Learn javascript',
-      isCompleted: false
-    },
-    {
-      id: 2,
-      title: 'Learn to touch-type',
-      isCompleted: true
-    },
-    {
-      id: 3,
-      title: 'Learn react w/ redux',
-      isCompleted: false
-    }
-  ])
+  const [todos, setTodos] = useState(JSON.parse(localStorage.getItem('todos')) || [])
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const addTodo = (title) => {
     const todo = {
