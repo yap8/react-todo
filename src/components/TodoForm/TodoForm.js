@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './TodoForm.scss'
 
 const TodoForm = ({ addTodo }) => {
   const [state, setState] = useState({
@@ -24,14 +25,15 @@ const TodoForm = ({ addTodo }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="TodoForm" onSubmit={handleSubmit}>
       <input
+        className="TodoForm__input"
         type="text" 
         name="title"
         value={state.title}
         onChange={handleChange} 
       />
-      <button>Add</button>
+      <button className="TodoForm__button">Add</button>
     </form>
   )
 }

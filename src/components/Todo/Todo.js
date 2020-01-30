@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import './Todo.scss'
+
 import TodoForm from '../TodoForm/TodoForm'
 import TodoList from '../TodoList/TodoList'
 
@@ -49,7 +51,7 @@ const Todo = () => {
   }
 
   return (
-    <div>
+    <div className="Todo">
       <TodoForm addTodo={addTodo} />
       <TodoList
         todos={todos}

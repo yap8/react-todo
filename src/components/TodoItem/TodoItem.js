@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
+import './TodoItem.scss'
 
 const TodoItem = ({ id, title, isCompleted, editTodoTitle, completeTodo, deleteTodo }) => {
   const [isBeingEdited, setIsBeingEdited] = useState(false)
   const [stateTitle, setStateTitle] = useState(title)
-
-  const TodoItemStyles = {
-    color: isCompleted ? 'green' : 'black'
-  }
 
   const handleEdit = () => {
     if (inputElement.current.readOnly) {
@@ -28,18 +25,38 @@ const TodoItem = ({ id, title, isCompleted, editTodoTitle, completeTodo, deleteT
 
   const inputElement = React.createRef()
 
+  let TodoItemClassName = 'TodoItem'
+
+  if (isCompleted) {
+    TodoItemClassName += ' TodoItem--completed'
+  }
+
+  if (isBeingEdited) {
+    TodoItemClassName += ' TodoItem--editing'
+  }
+
   return (
-    <li style={TodoItemStyles}>
+    <li className={TodoItemClassName}>
       <input 
+        className="TodoItem__input"
         ref={inputElement}
         type="text" 
         readOnly={true}
         value={stateTitle}
         onChange={handleChange} 
       />
-      <button onClick={handleEdit}>{isBeingEdited ? 'Update' : 'Edit'}</button>
-      <button onClick={() => completeTodo(id)}>Complete</button>
-      <button onClick={() => deleteTodo(id)}>Delete</button>
+      <button 
+        className="TodoItem__button"
+        onClick={handleEdit}
+      >{isBeingEdited ? 'Update' : 'Edit'}</button>
+      <button
+        className="TodoItem__button" 
+        onClick={() => completeTodo(id)}
+      >Complete</button>
+      <button
+        className="TodoItem__button" 
+        onClick={() => deleteTodo(id)}
+      >Delete</button>
     </li>
   )
 }

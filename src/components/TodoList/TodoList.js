@@ -1,4 +1,6 @@
 import React from 'react'
+import './TodoList.scss'
+
 import TodoItem from '../TodoItem/TodoItem'
 
 const TodoList = ({ todos, editTodoTitle, completeTodo, deleteTodo }) => {

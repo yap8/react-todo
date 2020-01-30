@@ -1,0 +1,15 @@
+.TodoForm {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  &__input {
+    font-size: 1.8rem;
+    padding: .25rem;
+    margin-right: .25rem;
+  }
+  &__button {
+    font-size: 1.8rem;
+    padding: .25rem;
+    cursor: pointer;
+  }
+}
