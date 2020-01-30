@@ -34,6 +34,17 @@ const Todo = () => {
     ])
   }
 
+  const editTodoTitle = (id, title) => {
+    const todosUpdated = todos.map(todo => {
+      if (todo.id === id) {
+        todo.title = title
+      }
+      return todo
+    })
+
+    setTodos(todosUpdated)
+  }
+
   const completeTodo = (id) => {
     const todosUpdated = todos.map(todo => {
       if (todo.id === id) {
@@ -54,6 +65,7 @@ const Todo = () => {
       <TodoForm addTodo={addTodo} />
       <TodoList
         todos={todos}
+        editTodoTitle={editTodoTitle}
         completeTodo={completeTodo}
         deleteTodo={deleteTodo}  
       />
