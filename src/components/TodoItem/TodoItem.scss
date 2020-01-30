@@ -1,10 +1,29 @@
 .TodoItem {
-  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-bottom: 1rem;
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
   &__input {
     padding: 0.25rem;
     font-size: 1.5rem;
     border: 0;
     outline: 0;
+  }
+  &__flags {
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    display: flex;
+  }
+  &__flag {
+    padding: 0.25rem;
+    border-radius: 3px;
+    &:not(:last-child) {
+      margin-right: 0.25rem;
+    }
   }
   &--completed &__input {
     color: green;
@@ -14,6 +33,7 @@
     box-shadow: 0 0 0 2px blue;
   }
   &__button {
+    width: 128px;
     padding: 0.25rem;
     font-size: 1.5rem;
     margin-left: .5rem;

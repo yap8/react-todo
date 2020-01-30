@@ -11,11 +11,12 @@ const Todo = () => {
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
 
-  const addTodo = (title) => {
+  const addTodo = (title, flags) => {
     const todo = {
       id: Math.random(),
       title,
-      isCompleted: false
+      isCompleted: false,
+      flags
     }
 
     setTodos([

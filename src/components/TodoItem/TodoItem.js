@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import './TodoItem.scss'
 
-const TodoItem = ({ id, title, isCompleted, editTodoTitle, completeTodo, deleteTodo }) => {
+const TodoItem = ({ id, title, isCompleted, flags = [], editTodoTitle, completeTodo, deleteTodo }) => {
   const [isBeingEdited, setIsBeingEdited] = useState(false)
   const [stateTitle, setStateTitle] = useState(title)
+
+  flags = <ul className="TodoItem__flags">
+    {flags.map((flag, index) => <li key={index} className="TodoItem__flag" style={{backgroundColor: flag.color}}>{flag.title}</li>)}
+  </ul>
 
   const handleEdit = () => {
     if (inputElement.current.readOnly) {
@@ -45,10 +49,11 @@ const TodoItem = ({ id, title, isCompleted, editTodoTitle, completeTodo, deleteT
         value={stateTitle}
         onChange={handleChange} 
       />
+      {flags}
       <button 
         className="TodoItem__button"
         onClick={handleEdit}
-      >{isBeingEdited ? 'Update' : 'Edit'}</button>
+      >{isBeingEdited ? 'Confirm' : 'Edit'}</button>
       <button
         className="TodoItem__button" 
         onClick={() => completeTodo(id)}

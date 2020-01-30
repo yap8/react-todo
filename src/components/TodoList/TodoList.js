@@ -10,6 +10,7 @@ const TodoList = ({ todos, editTodoTitle, completeTodo, deleteTodo }) => {
       id={todo.id}
       title={todo.title}
       isCompleted={todo.isCompleted}
+      flags={todo.flags}
       editTodoTitle={editTodoTitle}
       completeTodo={completeTodo}
       deleteTodo={deleteTodo}
@@ -17,7 +18,9 @@ const TodoList = ({ todos, editTodoTitle, completeTodo, deleteTodo }) => {
   ))
   
   return (
-    <ul>{todos}</ul>
+    <ul className="TodoList">
+      {todos}
+    </ul>
   )
 }
 
